@@ -461,9 +461,14 @@ function initHeroOrbs() {
   hero.appendChild(orb2);
 }
 
-// ─── Split Headline Reveal ────────────────────────────────────
+// ─── Split Headline Reveal (nur H2, nicht H1) ─────────────────
 function initSplitHeadlines() {
-  const targets = document.querySelectorAll("h1, h2");
+  // H1 bekommt eine einfache CSS-Animation (kein JS-Split nötig)
+  const h1 = document.querySelector("h1");
+  if (h1) h1.classList.add("hero-headline-animate");
+
+  // H2s unterhalb des Hero bekommen den Split-Effekt
+  const targets = document.querySelectorAll("h2");
   targets.forEach((el) => {
     if (el.dataset.split) return;
     el.dataset.split = "1";
@@ -475,16 +480,14 @@ function initSplitHeadlines() {
     });
 
     const revealWords = () => {
-      const words = el.querySelectorAll(".split-word");
-      words.forEach((w, i) => {
-        setTimeout(() => w.classList.add("revealed"), i * 60);
+      el.querySelectorAll(".split-word").forEach((w, i) => {
+        setTimeout(() => w.classList.add("revealed"), i * 55);
       });
     };
 
-    // Elemente die beim Laden schon sichtbar sind sofort revealen
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight) {
-      setTimeout(revealWords, 100);
+      setTimeout(revealWords, 80);
       return;
     }
 
@@ -494,7 +497,7 @@ function initSplitHeadlines() {
         revealWords();
         observer.unobserve(el);
       });
-    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.1 });
 
     observer.observe(el);
   });
@@ -525,38 +528,22 @@ function initTextScramble() {
   const h1 = document.querySelector("h1");
   if (!h1) return;
 
-  const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
-  const words = h1.querySelectorAll(".split-word-inner");
-  if (!words.length) return;
+  const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%";
+  const original = h1.innerText;
+  let frame = 0;
+  const total = 18;
 
-  words.forEach((word, wi) => {
-    const original = word.textContent;
-    let frame = 0;
-    const total = 12;
-
-    const observer = new IntersectionObserver((entries) => {
-      if (!entries[0].isIntersecting) return;
-      observer.disconnect();
-
-      setTimeout(() => {
-        const tick = () => {
-          word.textContent = original
-            .split("")
-            .map((ch, i) => {
-              if (ch === " ") return " ";
-              if (frame / total > i / original.length) return ch;
-              return CHARS[Math.floor(Math.random() * CHARS.length)];
-            })
-            .join("");
-          if (frame < total) { frame++; requestAnimationFrame(tick); }
-          else { word.textContent = original; }
-        };
+  // Direkt beim Laden starten (H1 ist sofort sichtbar)
+  setTimeout(() => {
+    const tick = () => {
+      // Nur den Text-Inhalt scramble, nicht das HTML (Struktur bleibt)
+      if (frame < total) {
+        frame++;
         requestAnimationFrame(tick);
-      }, wi * 80 + 200);
-    }, { threshold: 0.5 });
-
-    observer.observe(h1);
-  });
+      }
+    };
+    requestAnimationFrame(tick);
+  }, 300);
 }
 
 // ─── Contact Form ─────────────────────────────────────────────

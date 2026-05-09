@@ -1726,6 +1726,24 @@ body::after {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   HERO H1 — direkte CSS Animation (kein JS-Split)
+   ═══════════════════════════════════════════════════════════════ */
+.hero-headline-animate {
+  animation: hero-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
    SCRAMBLE TEXT
    ═══════════════════════════════════════════════════════════════ */
 .scramble-char {
