@@ -999,6 +999,17 @@ section { padding: var(--section-pad) 0; }
 .case-desc     { font-size: 0.9rem; margin-bottom: 1.25rem; line-height: 1.7; }
 .case-tags     { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
+.case-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-red);
+  letter-spacing: 0.04em;
+  transition: color var(--transition), gap var(--transition);
+}
+.case-link:hover { color: var(--accent-orange); }
+
 #mini-cases-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

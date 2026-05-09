@@ -157,6 +157,7 @@ function buildCases() {
         <div class="case-tags">
           ${c.tags.map((t) => `<span class="tag tag-accent">${t}</span>`).join("")}
         </div>
+        ${c.videoUrl ? `<a href="${c.videoUrl}" target="_blank" rel="noopener noreferrer" class="case-link">Video ansehen →</a>` : ""}
       </div>`;
     container.appendChild(el);
   });

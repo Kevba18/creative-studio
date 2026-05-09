@@ -18,7 +18,7 @@ const STATS = [
   { value: 200, suffix: "+", label: "Projekte" },
   { value: 25,  suffix: "+", label: "Brands" },
   { value: 15,  suffix: "+", label: "Artists" },
-  { value: 2,   suffix: "×", label: "Platz 1 Albumcharts" },
+  { value: 2,   suffix: "×", label: "Platz 1 Albumcharts mit Kollegah" },
   { value: 8,   suffix: "+", label: "Jahre Erfahrung" },
 ];
 
@@ -99,22 +99,33 @@ const SERVICES = [
 // CASE STUDIES
 const CASES = [
   {
-    id: "kollegah-magnum-opus",
+    id: "kollegah-magnum-opus-still-king",
     client: "Kollegah",
-    project: "Magnum Opus",
+    project: "Magnum Opus × Still King",
     description:
-      "Komplette visuelle Promophase mit YouTube-Serie, Musikvideo-Auskopplungen und begleitenden Visuals. Das Album erreichte Platz 1 der deutschen Charts und wurde mit einem offiziellen Nummer-1-Award ausgezeichnet.",
-    tags: ["Artist Visuals","Music Videos","YouTube Content","Promophase","Platz 1 Albumcharts"],
+      "Offizielles Musikvideo und komplette visuelle Promophase für zwei Alben. Beide Projekte erreichten Platz 1 der deutschen Charts — jeweils ausgezeichnet mit dem offiziellen Nummer-1-Award.",
+    tags: ["Official Video","Artist Visuals","Promophase","2× Platz 1 Albumcharts"],
     color: "#E51A36",
+    videoUrl: "https://www.youtube.com/watch?v=qxpgfwvblk4",
   },
   {
-    id: "kollegah-still-king",
+    id: "kollegah-erfolgsspur",
     client: "Kollegah",
-    project: "Still King",
+    project: "Erfolgsspur",
     description:
-      "Gezielte visuelle Kampagne mit Artist Content, YouTube-Inhalten und hochwertiger visueller Umsetzung. Auch dieses Album erreichte Platz 1 der deutschen Charts.",
-    tags: ["Campaign Content","Artist Visuals","YouTube","Platz 1 Albumcharts"],
+      "Offizielles Musikvideo mit hochwertiger visueller Umsetzung. Teil der fortlaufenden Zusammenarbeit im Bereich Artist Content und YouTube-Produktion.",
+    tags: ["Official Video","Artist Visuals","Music Video","YouTube"],
     color: "#FF6A1A",
+    videoUrl: "https://www.youtube.com/watch?v=vTW4Sf0tjTM",
+  },
+  {
+    id: "koenig-ludwig",
+    client: "König Ludwig",
+    project: "Brand Reel & Ritterturnier",
+    description:
+      "Zwei hochwertige Produktionen für die Marke König Ludwig: ein eigenständiger Brand Reel sowie ein atmosphärisches Video vom Kaltenberger Ritterturnier — visuelle Markenwirkung für eine der bekanntesten bayerischen Brauereien.",
+    tags: ["Brand Reel","Event Content","Instagram","Markenwirkung"],
+    color: "#E51A36",
   },
   {
     id: "samsung-mission-galaxy",
@@ -123,27 +134,18 @@ const CASES = [
     description:
       "Brand Content für ein internes Firmenvideo im hochwertigen Corporate-Umfeld.",
     tags: ["Brand Content","Corporate Video","Campaign Film"],
-    color: "#E51A36",
-  },
-  {
-    id: "vendvibe",
-    client: "Vendvibe",
-    project: "Full Digital Presence",
-    description:
-      "Ein Beispiel dafür, wie Website, Marketing, Content und visuelle Kommunikation zusammenwirken können. Ideal als Brücke zwischen digitalem Auftritt, B2B-Kommunikation und Content-Produktion.",
-    tags: ["B2B Marketing","Website","Content","Campaign"],
     color: "#FF6A1A",
   },
 ];
 
 // MINI CASES
 const MINI_CASES = [
-  { client: "MastiQgin",   project: "Produktvideo",           tags: ["Product Video"] },
-  { client: "Kingsleague", project: "Kampagne & Reel",        tags: ["Campaign","Reel"] },
-  { client: "König Ludwig",project: "Brand Reel",             tags: ["Brand Content"] },
-  { client: "Kaltenberger",project: "Ritterturnier Brand Reel",tags: ["Event","Brand"] },
-  { client: "ZDF",         project: "Fußball Content",        tags: ["Broadcast","Sports"] },
-  { client: "Kollegah",    project: "Aftermovie",             tags: ["Aftermovie"] },
+  { client: "Vendvibe",    project: "Full Digital Presence",   tags: ["Website","Marketing","Content"] },
+  { client: "MastiQgin",   project: "Produktvideo",            tags: ["Product Video"] },
+  { client: "Kingsleague", project: "Kampagne & Reel",         tags: ["Campaign","Reel"] },
+  { client: "ZDF",         project: "Fußball Content",         tags: ["Broadcast","Sports"] },
+  { client: "Kollegah",    project: "Aftermovie",              tags: ["Aftermovie"] },
+  { client: "DAZN",        project: "Sports Content",          tags: ["Sports","Brand Content"] },
 ];
 
 // REEL CARDS
