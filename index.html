@@ -278,64 +278,104 @@
       Content, der nicht nur gesehen wird.<br>Sondern hängen bleibt.
     </h2>
 
-    <div class="reel-layout">
+    <!-- Echte Instagram Reels als Phone-Frames -->
+    <div class="reels-phones-row">
 
-      <!-- Main Showreel -->
-      <div class="reel-main reveal">
-        <div class="reel-main-inner">
-          <div class="reel-main-label">Showreel 2024</div>
-          <div class="play-btn" role="button" aria-label="Showreel abspielen" tabindex="0">▶</div>
+      <!-- Reel 1 -->
+      <div class="phone-frame reveal" style="animation-delay:0s">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <iframe
+            src="https://www.instagram.com/reel/DDF5g_Vt0Tk/embed/"
+            loading="lazy"
+            allowfullscreen
+            frameborder="0"
+            scrolling="no"
+            title="Instagram Reel"
+          ></iframe>
+        </div>
+        <div class="phone-label">
+          <span class="phone-client">Reel 1</span>
+          <span class="phone-type">Instagram Reel</span>
         </div>
       </div>
 
-      <!-- Reel Cards Column -->
-      <div>
-        <div class="reel-grid" id="reel-grid">
-
-          <div class="reel-card reveal" style="animation-delay:0.1s">
-            <div class="reel-card-bg"></div>
-            <div class="reel-card-label">
-              <div class="reel-card-client">Samsung</div>
-              Brand Reel
-            </div>
-          </div>
-          <div class="reel-card reveal" style="animation-delay:0.2s">
-            <div class="reel-card-bg" style="background:linear-gradient(135deg,#080d14,#14080e)"></div>
-            <div class="reel-card-label">
-              <div class="reel-card-client">Kingsleague</div>
-              Campaign Clip
-            </div>
-          </div>
-          <div class="reel-card reveal" style="animation-delay:0.3s">
-            <div class="reel-card-bg" style="background:linear-gradient(135deg,#0c0814,#0d1008)"></div>
-            <div class="reel-card-label">
-              <div class="reel-card-client">Kollegah</div>
-              Official Video
-            </div>
-          </div>
-          <div class="reel-card reveal" style="animation-delay:0.4s">
-            <div class="reel-card-bg" style="background:linear-gradient(135deg,#140a08,#08100d)"></div>
-            <div class="reel-card-label">
-              <div class="reel-card-client">König Ludwig</div>
-              Aftermovie
-            </div>
-          </div>
-          <div class="reel-card reveal" style="animation-delay:0.5s">
-            <div class="reel-card-bg" style="background:linear-gradient(135deg,#0a0a14,#140a0c)"></div>
-            <div class="reel-card-label">
-              <div class="reel-card-client">MastiQgin</div>
-              Product Video
-            </div>
-          </div>
-          <div class="reel-card reveal" style="animation-delay:0.6s">
-            <div class="reel-card-bg" style="background:linear-gradient(135deg,#0d0c08,#08140e)"></div>
-            <div class="reel-card-label">
-              <div class="reel-card-client">Vendvibe</div>
-              Social Cut
-            </div>
-          </div>
-
+      <!-- Reel 2 -->
+      <div class="phone-frame reveal" style="animation-delay:0.15s">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <iframe
+            src="https://www.instagram.com/reel/DXCtZcFja4M/embed/"
+            loading="lazy"
+            allowfullscreen
+            frameborder="0"
+            scrolling="no"
+            title="Instagram Reel"
+          ></iframe>
         </div>
+        <div class="phone-label">
+          <span class="phone-client">Reel 2</span>
+          <span class="phone-type">Instagram Reel</span>
+        </div>
+      </div>
+
+      <!-- Reel 3 — König Ludwig Brand Reel -->
+      <div class="phone-frame reveal" style="animation-delay:0.3s">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <iframe
+            src="https://www.instagram.com/reel/DQpTkteiFDh/embed/"
+            loading="lazy"
+            allowfullscreen
+            frameborder="0"
+            scrolling="no"
+            title="König Ludwig Brand Reel"
+          ></iframe>
+        </div>
+        <div class="phone-label">
+          <span class="phone-client">König Ludwig</span>
+          <span class="phone-type">Brand Reel</span>
+        </div>
+      </div>
+
+      <!-- Reel 4 — Kaltenberger Ritterturnier -->
+      <div class="phone-frame reveal" style="animation-delay:0.45s">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <iframe
+            src="https://www.instagram.com/reel/C94UtQ4iVWO/embed/"
+            loading="lazy"
+            allowfullscreen
+            frameborder="0"
+            scrolling="no"
+            title="Kaltenberger Ritterturnier"
+          ></iframe>
+        </div>
+        <div class="phone-label">
+          <span class="phone-client">König Ludwig</span>
+          <span class="phone-type">Kaltenberger Ritterturnier</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Showreel Placeholder darunter -->
+    <div class="reel-main-wide reveal">
+      <div class="reel-main-label">Showreel · Platzhalter</div>
+      <div class="play-btn" role="button" aria-label="Showreel abspielen" tabindex="0">▶</div>
+      <p class="reel-main-sub">Vollständiger Showreel — wird nach Fertigstellung eingebunden</p>
+    </div>
+
+    <!-- Client Chips -->
+    <div class="reel-clients" aria-hidden="true">
+      <span class="floating-chip chip-ref">König Ludwig</span>
+      <span class="floating-chip chip-ref">Kaltenberger</span>
+      <span class="floating-chip chip-ref">Samsung</span>
+      <span class="floating-chip chip-ref">Kollegah</span>
+      <span class="floating-chip chip-ref">DAZN</span>
+    </div>
+
+        <div id="reel-grid" style="display:none"></div><!-- Legacy-Grid ausgeblendet -->
 
         <!-- Client chips -->
         <div class="reel-clients" aria-hidden="true">
