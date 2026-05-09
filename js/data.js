@@ -140,12 +140,12 @@ const CASES = [
 
 // MINI CASES
 const MINI_CASES = [
-  { client: "Vendvibe",    project: "Full Digital Presence",   tags: ["Website","Marketing","Content"] },
   { client: "MastiQgin",   project: "Produktvideo",            tags: ["Product Video"] },
   { client: "Kingsleague", project: "Kampagne & Reel",         tags: ["Campaign","Reel"] },
   { client: "ZDF",         project: "Fußball Content",         tags: ["Broadcast","Sports"] },
   { client: "Kollegah",    project: "Aftermovie",              tags: ["Aftermovie"] },
   { client: "DAZN",        project: "Sports Content",          tags: ["Sports","Brand Content"] },
+  { client: "Farid Bang",  project: "Artist Content",          tags: ["Artist Visuals"] },
 ];
 
 // REEL CARDS

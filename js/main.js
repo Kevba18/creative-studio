@@ -22,6 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initFAQAccordion();
   initHeaderScroll();
   initMobileMenu();
+  initCustomCursor();
+  initHeroOrbs();
+  initSplitHeadlines();
+  initMagneticButtons();
+  initTextScramble();
 });
 
 // ─── Studio Name Injection ────────────────────────────────────
@@ -394,6 +399,152 @@ function initMobileMenu() {
       toggle.setAttribute("aria-expanded", "false");
       toggle.classList.remove("is-open");
     });
+  });
+}
+
+// ─── Custom Cursor ────────────────────────────────────────────
+function initCustomCursor() {
+  const isTouchDevice = window.matchMedia("(hover: none)").matches;
+  if (isTouchDevice) return;
+
+  const dot  = document.createElement("div");
+  const ring = document.createElement("div");
+  dot.className  = "cursor-dot";
+  ring.className = "cursor-ring";
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+
+  let mouseX = -100, mouseY = -100;
+  let ringX  = -100, ringY  = -100;
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + "px";
+    dot.style.top  = mouseY + "px";
+  }, { passive: true });
+
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const animateRing = () => {
+    ringX = lerp(ringX, mouseX, 0.12);
+    ringY = lerp(ringY, mouseY, 0.12);
+    ring.style.left = ringX + "px";
+    ring.style.top  = ringY + "px";
+    requestAnimationFrame(animateRing);
+  };
+  animateRing();
+
+  const hoverTargets = "a, button, .btn, .reel-card, .phone-frame, .case-card, .faq-question, .service-panel, .ref-item";
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest(hoverTargets)) {
+      dot.classList.add("cursor-hover");
+      ring.classList.add("cursor-hover");
+    }
+  });
+  document.addEventListener("mouseout", (e) => {
+    if (e.target.closest(hoverTargets)) {
+      dot.classList.remove("cursor-hover");
+      ring.classList.remove("cursor-hover");
+    }
+  });
+}
+
+// ─── Hero Glow Orbs ───────────────────────────────────────────
+function initHeroOrbs() {
+  const hero = document.querySelector(".hero");
+  if (!hero) return;
+  const orb1 = document.createElement("div");
+  const orb2 = document.createElement("div");
+  orb1.className = "hero-orb hero-orb-1";
+  orb2.className = "hero-orb hero-orb-2";
+  hero.appendChild(orb1);
+  hero.appendChild(orb2);
+}
+
+// ─── Split Headline Reveal ────────────────────────────────────
+function initSplitHeadlines() {
+  const targets = document.querySelectorAll("h1, h2");
+  targets.forEach((el) => {
+    if (el.dataset.split) return;
+    el.dataset.split = "1";
+
+    const html = el.innerHTML;
+    el.innerHTML = html.replace(/(<[^>]+>)|([^\s<]+)/g, (match, tag, word) => {
+      if (tag) return tag;
+      return `<span class="split-word"><span class="split-word-inner">${word}</span></span>`;
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const words = el.querySelectorAll(".split-word");
+        words.forEach((w, i) => {
+          setTimeout(() => w.classList.add("revealed"), i * 60);
+        });
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(el);
+  });
+}
+
+// ─── Magnetic Buttons ─────────────────────────────────────────
+function initMagneticButtons() {
+  const isTouchDevice = window.matchMedia("(hover: none)").matches;
+  if (isTouchDevice) return;
+
+  document.querySelectorAll(".btn").forEach((btn) => {
+    btn.addEventListener("mousemove", (e) => {
+      const rect   = btn.getBoundingClientRect();
+      const cx     = rect.left + rect.width  / 2;
+      const cy     = rect.top  + rect.height / 2;
+      const dx     = (e.clientX - cx) * 0.3;
+      const dy     = (e.clientY - cy) * 0.3;
+      btn.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+    btn.addEventListener("mouseleave", () => {
+      btn.style.transform = "";
+    });
+  });
+}
+
+// ─── Text Scramble on H1 ──────────────────────────────────────
+function initTextScramble() {
+  const h1 = document.querySelector("h1");
+  if (!h1) return;
+
+  const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
+  const words = h1.querySelectorAll(".split-word-inner");
+  if (!words.length) return;
+
+  words.forEach((word, wi) => {
+    const original = word.textContent;
+    let frame = 0;
+    const total = 12;
+
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      observer.disconnect();
+
+      setTimeout(() => {
+        const tick = () => {
+          word.textContent = original
+            .split("")
+            .map((ch, i) => {
+              if (ch === " ") return " ";
+              if (frame / total > i / original.length) return ch;
+              return CHARS[Math.floor(Math.random() * CHARS.length)];
+            })
+            .join("");
+          if (frame < total) { frame++; requestAnimationFrame(tick); }
+          else { word.textContent = original; }
+        };
+        requestAnimationFrame(tick);
+      }, wi * 80 + 200);
+    }, { threshold: 0.5 });
+
+    observer.observe(h1);
   });
 }
 

@@ -1661,6 +1661,194 @@ footer {
   margin: 0;
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   CUSTOM CURSOR
+   ═══════════════════════════════════════════════════════════════ */
+* { cursor: none !important; }
+
+.cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-red);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: normal;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(229,26,54,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s cubic-bezier(0.25,0.46,0.45,0.94),
+              height 0.4s cubic-bezier(0.25,0.46,0.45,0.94),
+              border-color 0.3s;
+}
+
+.cursor-dot.cursor-hover  { width: 10px; height: 10px; background: var(--accent-orange); }
+.cursor-ring.cursor-hover { width: 56px; height: 56px; border-color: rgba(255,106,26,0.4); }
+
+/* ═══════════════════════════════════════════════════════════════
+   NOISE TEXTURE OVERLAY
+   ═══════════════════════════════════════════════════════════════ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 9000;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO GRID LINES
+   ═══════════════════════════════════════════════════════════════ */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCRAMBLE TEXT
+   ═══════════════════════════════════════════════════════════════ */
+.scramble-char {
+  display: inline-block;
+  transition: color 0.05s;
+}
+.scramble-char.scrambling { color: var(--accent-red); }
+
+/* ═══════════════════════════════════════════════════════════════
+   SPLIT HEADLINE REVEAL
+   ═══════════════════════════════════════════════════════════════ */
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  margin-right: 0.18em;
+}
+.split-word-inner {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.75s cubic-bezier(0.16,1,0.3,1);
+}
+.split-word.revealed .split-word-inner { transform: translateY(0); }
+
+/* ═══════════════════════════════════════════════════════════════
+   MAGNETIC BUTTON
+   ═══════════════════════════════════════════════════════════════ */
+.btn { will-change: transform; }
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION COUNTER ACCENT LINE
+   ═══════════════════════════════════════════════════════════════ */
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: var(--accent-red);
+  vertical-align: middle;
+  margin-right: 0.6rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO GLOW ORBS
+   ═══════════════════════════════════════════════════════════════ */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  animation: orb-drift 12s ease-in-out infinite alternate;
+}
+.hero-orb-1 {
+  width: 500px; height: 500px;
+  background: rgba(229,26,54,0.07);
+  top: -100px; right: -80px;
+  animation-delay: 0s;
+}
+.hero-orb-2 {
+  width: 350px; height: 350px;
+  background: rgba(255,106,26,0.05);
+  bottom: -60px; left: 10%;
+  animation-delay: -6s;
+}
+@keyframes orb-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(30px, -40px) scale(1.1); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   VIDEO STAGE SCANLINES
+   ═══════════════════════════════════════════════════════════════ */
+.video-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.08) 3px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   5-COLUMN PHONE GRID
+   ═══════════════════════════════════════════════════════════════ */
+.reels-phones-row { grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+
+@media (max-width: 1200px) { .reels-phones-row { grid-template-columns: repeat(3, 1fr) !important; } }
+@media (max-width: 760px)  { .reels-phones-row { grid-template-columns: repeat(2, 1fr) !important; } }
+
+/* ═══════════════════════════════════════════════════════════════
+   PROOF BAR ACCENT
+   ═══════════════════════════════════════════════════════════════ */
+.proof-bar {
+  position: relative;
+}
+.proof-bar::before,
+.proof-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.proof-bar::before { left: 0;  background: linear-gradient(90deg, var(--bg-secondary), transparent); }
+.proof-bar::after  { right: 0; background: linear-gradient(-90deg, var(--bg-secondary), transparent); }
+
+/* ═══════════════════════════════════════════════════════════════
+   STAT ITEM HOVER
+   ═══════════════════════════════════════════════════════════════ */
+.stat-item {
+  transition: background var(--transition);
+  cursor: default;
+}
+.stat-item:hover { background: #1c1d20; }
+
 /* ─── Scrollbar ──────────────────────────────────────────────── */
 ::-webkit-scrollbar       { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
