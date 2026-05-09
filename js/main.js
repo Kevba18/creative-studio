@@ -474,16 +474,27 @@ function initSplitHeadlines() {
       return `<span class="split-word"><span class="split-word-inner">${word}</span></span>`;
     });
 
+    const revealWords = () => {
+      const words = el.querySelectorAll(".split-word");
+      words.forEach((w, i) => {
+        setTimeout(() => w.classList.add("revealed"), i * 60);
+      });
+    };
+
+    // Elemente die beim Laden schon sichtbar sind sofort revealen
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      setTimeout(revealWords, 100);
+      return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        const words = el.querySelectorAll(".split-word");
-        words.forEach((w, i) => {
-          setTimeout(() => w.classList.add("revealed"), i * 60);
-        });
+        revealWords();
         observer.unobserve(el);
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
 
     observer.observe(el);
   });
