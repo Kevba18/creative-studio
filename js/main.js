@@ -192,6 +192,10 @@ function buildWebProjects() {
     const card = document.createElement("article");
     card.className = "web-project-card reveal";
     card.innerHTML = `
+      ${p.image ? `
+      <div class="web-project-img">
+        <img src="${p.image}" alt="${p.title} Vorschau" loading="lazy" />
+      </div>` : ""}
       <div class="web-project-status ${p.status === 'Live' ? 'live' : 'preview'}">
         ${p.status === 'Live' ? 'Live Projekt' : 'Projektvorschau'}
       </div>

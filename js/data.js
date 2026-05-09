@@ -40,6 +40,7 @@ const WEB_PROJECTS = [
     description: "Klarer Webauftritt für Kinderschwimmkurse im Ruhrgebiet. Fokus auf Vertrauen, einfacher Standortwahl und direkter Kursanfrage.",
     tags: ["Webdesign","Lokale Sichtbarkeit","Mobile","Conversion"],
     status: "Live",
+    image: "assets/projects/optimized/wasserflitzer-preview.jpg",
   },
   {
     title: "Wir machen Handwerk",
@@ -48,6 +49,7 @@ const WEB_PROJECTS = [
     description: "Moderner B2B-Auftritt mit digitaler Schadenmeldung und strukturierter Auftragsabwicklung für Hausverwaltungen und Versicherungen.",
     tags: ["Webdesign","B2B","Portal","Conversion","UX"],
     status: "Live",
+    image: "assets/projects/optimized/wir_machen_handwerk_website_hero.jpg",
   },
   {
     title: "HSR Bauunternehmen",
@@ -56,6 +58,7 @@ const WEB_PROJECTS = [
     description: "Klarer Auftritt für Handwerksarbeiten in Duisburg: Trockenbau, Malerarbeiten und Innenausbau mit direkter Kontaktführung.",
     tags: ["Webdesign","Handwerk","Lokale Website","Duisburg"],
     status: "Live",
+    image: "assets/projects/optimized/hsr_bauunternehmen_website_hero.jpg",
   },
   {
     title: "KI fiziert",
@@ -64,6 +67,7 @@ const WEB_PROJECTS = [
     description: "Landingpage für eine geförderte KI-Weiterbildung mit klarer Nutzenkommunikation und starker Conversion-Führung.",
     tags: ["Landingpage","KI","Conversion","Weiterbildung"],
     status: "Live",
+    image: "assets/projects/optimized/ki_fiziert_weiterbildung_landingpage.jpg",
   },
   {
     title: "Chapter Zero Studios",
@@ -72,6 +76,7 @@ const WEB_PROJECTS = [
     description: "Dunkler, cinematic Webauftritt mit starker Typografie, rotem Akzent und klarem Fokus auf Videografie, Artists und Brands.",
     tags: ["Webdesign","Brand Look","Hero Konzept","Dark UI"],
     status: "Vorschau",
+    image: "assets/projects/optimized/chapter-zero-studios-website-hero.jpg",
   },
   {
     title: "Podologie Retreat",
@@ -80,6 +85,7 @@ const WEB_PROJECTS = [
     description: "Emotionale Landingpage für ein exklusives Retreat mit hochwertiger Bildsprache und klarer Bewerbungsführung.",
     tags: ["Landingpage","Premium Design","Event","Retreat"],
     status: "Vorschau",
+    image: "assets/projects/optimized/podologie_retreat_landingpage_hero.jpg",
   },
 ];
 
