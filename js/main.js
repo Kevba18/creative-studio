@@ -305,10 +305,11 @@ function buildCases() {
     el.style.setProperty("--case-accent", c.color);
     el.innerHTML = `
       <div class="case-visual">
-        <div class="case-placeholder">
-          <div class="case-play-icon">▶</div>
-          <div class="case-overlay-text">${c.client}</div>
-        </div>
+        ${c.image
+          ? `<img src="${c.image}" alt="${c.client} – ${c.project}" loading="lazy" class="case-img" />`
+          : `<div class="case-placeholder"><div class="case-play-icon">▶</div></div>`
+        }
+        <div class="case-overlay-text">${c.client}</div>
       </div>
       <div class="case-content">
         <div class="case-client">${c.client}</div>
@@ -331,7 +332,7 @@ function buildMiniCases() {
     const el = document.createElement("div");
     el.className = "mini-case reveal";
     el.innerHTML = `
-      <div class="mini-case-visual"></div>
+      <div class="mini-case-visual" ${c.image ? `style="background-image:url('${c.image}');background-size:cover;background-position:center"` : ""}></div>
       <div class="mini-case-info">
         <span class="mini-case-client">${c.client}</span>
         <span class="mini-case-project">${c.project}</span>
@@ -370,7 +371,7 @@ function buildFounders() {
     const el = document.createElement("div");
     el.className = "founder-card reveal";
     el.innerHTML = `
-      <div class="founder-avatar"></div>
+      <div class="founder-avatar" ${f.image ? `style="background-image:url('${f.image}');background-size:cover;background-position:top center"` : ""}></div>
       <div class="founder-info">
         <h3 class="founder-name">${f.name}</h3>
         <p class="founder-role">${f.role}</p>

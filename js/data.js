@@ -184,6 +184,7 @@ const CASES = [
     tags: ["Official Video","Artist Visuals","Promophase","2× Platz 1 Albumcharts"],
     color: "#E51A36",
     videoUrl: "https://www.youtube.com/watch?v=qxpgfwvblk4",
+    image: "assets/joel/case-magnum-opus.jpg",
   },
   {
     id: "kollegah-erfolgsspur",
@@ -194,6 +195,7 @@ const CASES = [
     tags: ["Official Video","Artist Visuals","Music Video","YouTube"],
     color: "#FF6A1A",
     videoUrl: "https://www.youtube.com/watch?v=vTW4Sf0tjTM",
+    image: "assets/joel/work-erfolgsspur.jpg",
   },
   {
     id: "koenig-ludwig",
@@ -203,6 +205,7 @@ const CASES = [
       "Zwei hochwertige Produktionen für die Marke König Ludwig: ein eigenständiger Brand Reel sowie ein atmosphärisches Video vom Kaltenberger Ritterturnier — visuelle Markenwirkung für eine der bekanntesten bayerischen Brauereien.",
     tags: ["Brand Reel","Event Content","Instagram","Markenwirkung"],
     color: "#E51A36",
+    image: "assets/joel/work-koenig-ludwig-ritter.jpg",
   },
   {
     id: "samsung-mission-galaxy",
@@ -212,17 +215,19 @@ const CASES = [
       "Brand Content für ein internes Firmenvideo im hochwertigen Corporate-Umfeld.",
     tags: ["Brand Content","Corporate Video","Campaign Film"],
     color: "#FF6A1A",
+    image: "assets/joel/work-samsung.jpg",
   },
 ];
 
 // MINI CASES
+
 const MINI_CASES = [
-  { client: "MastiQgin",   project: "Produktvideo",            tags: ["Product Video"] },
-  { client: "Kingsleague", project: "Kampagne & Reel",         tags: ["Campaign","Reel"] },
-  { client: "ZDF",         project: "Fußball Content",         tags: ["Broadcast","Sports"] },
-  { client: "Kollegah",    project: "Aftermovie",              tags: ["Aftermovie"] },
-  { client: "DAZN",        project: "Sports Content",          tags: ["Sports","Brand Content"] },
-  { client: "Farid Bang",  project: "Artist Content",          tags: ["Artist Visuals"] },
+  { client: "MastiQgin",   project: "Produktvideo",    tags: ["Product Video"],    image: "assets/joel/work-mastiq-gin.jpg" },
+  { client: "Kingsleague", project: "Kampagne & Reel", tags: ["Campaign","Reel"],  image: "assets/joel/work-kingsleague.jpg" },
+  { client: "Kollegah",    project: "Aftermovie",      tags: ["Aftermovie"],       image: "assets/joel/work-kollegah-aftermovie.jpg" },
+  { client: "Kollegah",    project: "Lorbeerkranz",    tags: ["Artist Visuals"],   image: "assets/joel/work-kollegah-lorbeerkranz.jpg" },
+  { client: "König Ludwig",project: "Brand",           tags: ["Brand Content"],    image: "assets/joel/work-koenig-ludwig-hell.jpg" },
+  { client: "Kollegah",    project: "Boss Flaniert",   tags: ["Artist Visuals"],   image: "assets/joel/work-boss-flaniert.jpg" },
 ];
 
 // REEL CARDS
@@ -271,11 +276,13 @@ const FOUNDERS = [
     name: "Kevin Balfanz",
     role: "Digital & Marketing",
     skills: ["Marketing","Websites","SEO","KI-Prozesse","Leadstruktur","Conversion","Digitale Systeme","Automatisierung"],
+    image: null,
   },
   {
     name: "Joel Burnic",
     role: "Creative & Video",
     skills: ["Videografie","Creative Direction","Brand Content","Reels","Artist Visuals","Music Videos","Kampagnen","Aftermovies"],
+    image: "assets/joel/portrait-joel.jpg",
   },
 ];
 
