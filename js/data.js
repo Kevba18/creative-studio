@@ -31,7 +31,7 @@ const ARTISTS = [
 const BRANDS = [
   "ARD & ZDF","Samsung","König Ludwig","Deutsches Elektrohandwerk",
   "Edeka","Kingsleague","DAZN","Effect","Universal","Vendvibe",
-  "Saygin GmbH","Santos Grills","MastiQgin","Baer Machines",
+  "Saygin GmbH","Santos Grills","MastiQgin","Baer Machines","Bienemann NRW",
 ];
 
 // HERO FLOATING CHIPS
