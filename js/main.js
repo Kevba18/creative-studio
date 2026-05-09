@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   injectStudioName();
   buildHeroChips();
   buildProofMarquee();
+  buildReelCarousel();
+  buildWebProjects();
   buildServices();
   buildStats();
   buildReferenceGrid();
@@ -64,6 +66,155 @@ function createChip(text, cls, index) {
   chip.textContent = text;
   chip.style.animationDelay = `${index * 0.4}s`;
   return chip;
+}
+
+// ─── Reel Carousel ───────────────────────────────────────────
+function buildReelCarousel() {
+  const carousel = document.getElementById("reel-carousel");
+  const dotsContainer = document.getElementById("carousel-dots");
+  const prevBtn = document.getElementById("carousel-prev");
+  const nextBtn = document.getElementById("carousel-next");
+  if (!carousel) return;
+
+  // Items aus data.js bauen
+  REELS.forEach((reel, i) => {
+    const item = document.createElement("div");
+    item.className = "carousel-item" + (i === 0 ? " active" : "");
+    item.setAttribute("role", "listitem");
+    item.dataset.index = i;
+    item.innerHTML = `
+      <div class="phone-wrap">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <iframe
+            src="https://www.instagram.com/reel/${reel.id}/embed/"
+            loading="lazy"
+            allowfullscreen
+            frameborder="0"
+            scrolling="no"
+            title="${reel.client} – ${reel.type}"
+          ></iframe>
+          <div class="phone-play-overlay" aria-hidden="true">
+            <div class="play-icon">▶</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-label">
+        <span class="phone-client">${reel.client}</span>
+        <span class="phone-type">${reel.type}</span>
+      </div>`;
+
+    // Klick auf inaktives Item → zu diesem scrollen
+    item.addEventListener("click", () => {
+      if (!item.classList.contains("active")) {
+        scrollToItem(i);
+      }
+    });
+
+    carousel.appendChild(item);
+
+    // Dot
+    const dot = document.createElement("button");
+    dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("aria-label", `Reel ${i + 1}: ${reel.client}`);
+    dot.addEventListener("click", () => scrollToItem(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const items = carousel.querySelectorAll(".carousel-item");
+  const dots  = dotsContainer.querySelectorAll(".carousel-dot");
+  let activeIndex = 0;
+
+  function scrollToItem(index) {
+    const target = items[index];
+    if (!target) return;
+    target.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }
+
+  function updateActive() {
+    const carouselRect = carousel.getBoundingClientRect();
+    const centerX = carouselRect.left + carouselRect.width / 2;
+    let closest = 0;
+    let closestDist = Infinity;
+
+    items.forEach((item, i) => {
+      const rect = item.getBoundingClientRect();
+      const itemCenterX = rect.left + rect.width / 2;
+      const dist = Math.abs(itemCenterX - centerX);
+      if (dist < closestDist) { closestDist = dist; closest = i; }
+    });
+
+    if (closest !== activeIndex) {
+      items[activeIndex].classList.remove("active");
+      dots[activeIndex].classList.remove("active");
+      closest = Math.max(0, Math.min(closest, items.length - 1));
+      activeIndex = closest;
+      items[activeIndex].classList.add("active");
+      dots[activeIndex].classList.add("active");
+    }
+  }
+
+  carousel.addEventListener("scroll", updateActive, { passive: true });
+
+  // Arrow buttons
+  prevBtn?.addEventListener("click", () => scrollToItem(Math.max(0, activeIndex - 1)));
+  nextBtn?.addEventListener("click", () => scrollToItem(Math.min(items.length - 1, activeIndex + 1)));
+
+  // Keyboard
+  carousel.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft")  scrollToItem(Math.max(0, activeIndex - 1));
+    if (e.key === "ArrowRight") scrollToItem(Math.min(items.length - 1, activeIndex + 1));
+  });
+
+  // Drag to scroll
+  let isDown = false, startX = 0, scrollLeft = 0;
+  carousel.addEventListener("mousedown",  (e) => { isDown = true; startX = e.pageX - carousel.offsetLeft; scrollLeft = carousel.scrollLeft; });
+  carousel.addEventListener("mouseleave", () => isDown = false);
+  carousel.addEventListener("mouseup",    () => isDown = false);
+  carousel.addEventListener("mousemove",  (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - carousel.offsetLeft;
+    carousel.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+
+  // Initial position: center first item
+  setTimeout(() => scrollToItem(0), 100);
+}
+
+// ─── Web Projekte ─────────────────────────────────────────────
+function buildWebProjects() {
+  const grid = document.getElementById("web-projects-grid");
+  const marqueeRow = document.getElementById("web-marquee");
+  if (!grid) return;
+
+  WEB_PROJECTS.forEach((p) => {
+    const card = document.createElement("article");
+    card.className = "web-project-card reveal";
+    card.innerHTML = `
+      <div class="web-project-status ${p.status === 'Live' ? 'live' : 'preview'}">
+        ${p.status === 'Live' ? 'Live Projekt' : 'Projektvorschau'}
+      </div>
+      <div class="web-project-category">${p.category}</div>
+      <div class="web-project-title">${p.title}</div>
+      <p class="web-project-desc">${p.description}</p>
+      <div class="web-project-tags">
+        ${p.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
+      </div>
+      ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="web-project-link">Projekt ansehen →</a>` : `<span class="web-project-link" style="color:#444;cursor:default">Anfrage stellen →</span>`}`;
+    grid.appendChild(card);
+  });
+
+  // Web clients marquee
+  if (marqueeRow) {
+    const all = [...WEB_CLIENTS, ...WEB_CLIENTS, ...WEB_CLIENTS];
+    const track = document.createElement("div");
+    track.className = "web-marquee-track";
+    track.innerHTML = all.map((name) =>
+      `<span class="web-marquee-item">${name}</span><span class="web-marquee-sep" aria-hidden="true">·</span>`
+    ).join("");
+    marqueeRow.appendChild(track);
+  }
 }
 
 // ─── Proof Marquee ───────────────────────────────────────────

@@ -22,6 +22,77 @@ const STATS = [
   { value: 8,   suffix: "+", label: "Jahre Erfahrung" },
 ];
 
+// REELS CAROUSEL
+const REELS = [
+  { id: "DDF5g_Vt0Tk", client: "Kings League Germany", type: "Campaign Reel" },
+  { id: "DXCtZcFja4M", client: "Kollegah",             type: "Artist Content" },
+  { id: "DQpTkteiFDh", client: "König Ludwig",          type: "Brand Reel" },
+  { id: "C94UtQ4iVWO", client: "König Ludwig",          type: "Kaltenberger Ritterturnier" },
+  { id: "DXrpbpakUdp", client: "Bienemann NRW",         type: "Lebensmittel & Backhandwerk" },
+];
+
+// WEB PROJEKTE (Kevin)
+const WEB_PROJECTS = [
+  {
+    title: "Schwimmschule Wasserflitzer",
+    url: "https://schwimmschule-wasserflitzer.de/",
+    category: "Webdesign · Lokale Sichtbarkeit",
+    description: "Klarer Webauftritt für Kinderschwimmkurse im Ruhrgebiet. Fokus auf Vertrauen, einfacher Standortwahl und direkter Kursanfrage.",
+    tags: ["Webdesign","Lokale Sichtbarkeit","Mobile","Conversion"],
+    status: "Live",
+  },
+  {
+    title: "Wir machen Handwerk",
+    url: null,
+    category: "Webdesign · Portal · B2B",
+    description: "Moderner B2B-Auftritt mit digitaler Schadenmeldung und strukturierter Auftragsabwicklung für Hausverwaltungen und Versicherungen.",
+    tags: ["Webdesign","B2B","Portal","Conversion","UX"],
+    status: "Live",
+  },
+  {
+    title: "HSR Bauunternehmen",
+    url: null,
+    category: "Webdesign · Handwerk · Duisburg",
+    description: "Klarer Auftritt für Handwerksarbeiten in Duisburg: Trockenbau, Malerarbeiten und Innenausbau mit direkter Kontaktführung.",
+    tags: ["Webdesign","Handwerk","Lokale Website","Duisburg"],
+    status: "Live",
+  },
+  {
+    title: "KI fiziert",
+    url: null,
+    category: "Landingpage · KI-Weiterbildung",
+    description: "Landingpage für eine geförderte KI-Weiterbildung mit klarer Nutzenkommunikation und starker Conversion-Führung.",
+    tags: ["Landingpage","KI","Conversion","Weiterbildung"],
+    status: "Live",
+  },
+  {
+    title: "Chapter Zero Studios",
+    url: null,
+    category: "Branding · Webdesign · Creative Direction",
+    description: "Dunkler, cinematic Webauftritt mit starker Typografie, rotem Akzent und klarem Fokus auf Videografie, Artists und Brands.",
+    tags: ["Webdesign","Brand Look","Hero Konzept","Dark UI"],
+    status: "Vorschau",
+  },
+  {
+    title: "Podologie Retreat",
+    url: null,
+    category: "Landingpage · Premium Design",
+    description: "Emotionale Landingpage für ein exklusives Retreat mit hochwertiger Bildsprache und klarer Bewerbungsführung.",
+    tags: ["Landingpage","Premium Design","Event","Retreat"],
+    status: "Vorschau",
+  },
+];
+
+// WEB-REFERENZEN (Kevin)
+const WEB_CLIENTS = [
+  "Schwimmschule Wasserflitzer","Wir machen Handwerk","HSR Bauunternehmen",
+  "AfS – Akademie für Sicherheit","Die Sozialwerker","Helden Performance",
+  "Iron Mind","Judoteam Voerde","Kundenwerk24","Naturheilpraxis Issel",
+  "Impuls Events","Skool Festival","VersFinanz Konzept","SecureMesh",
+  "Carnetix","Blattwerk Hamminkeln","Fenja Flore","Mixed By",
+  "Gesundheit im Gleichgewicht",
+];
+
 // REFERENZEN
 const ARTISTS = [
   "Kollegah","Majoe","Asche","Farid Bang","Trymacs",

@@ -267,145 +267,56 @@
 
 
 <!-- ══════════════════════════════════════════════════════════
-     REEL WALL
+     REEL CAROUSEL
      ══════════════════════════════════════════════════════════ -->
 <section class="reel-section" id="reels" aria-labelledby="reel-headline">
+
   <div class="container">
-
     <span class="section-label">Content</span>
-
     <h2 id="reel-headline" class="reveal">
       Content, der nicht nur gesehen wird.<br>Sondern hängen bleibt.
     </h2>
+    <p class="reel-intro reveal">Scroll durch unsere Produktionen — klick zum Abspielen.</p>
+  </div>
 
-    <!-- Echte Instagram Reels als Phone-Frames -->
-    <div class="reels-phones-row">
+  <!-- Carousel (full-width, kein container) -->
+  <div class="reel-carousel-wrap">
 
-      <!-- Reel 1 -->
-      <div class="phone-frame reveal" style="animation-delay:0s">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <iframe
-            src="https://www.instagram.com/reel/DDF5g_Vt0Tk/embed/"
-            loading="lazy"
-            allowfullscreen
-            frameborder="0"
-            scrolling="no"
-            title="Instagram Reel"
-          ></iframe>
-        </div>
-        <div class="phone-label">
-          <span class="phone-client">Kings League Germany</span>
-          <span class="phone-type">Campaign Reel</span>
-        </div>
-      </div>
+    <button class="carousel-arrow carousel-arrow-left" aria-label="Zurück" id="carousel-prev">‹</button>
+    <button class="carousel-arrow carousel-arrow-right" aria-label="Weiter" id="carousel-next">›</button>
 
-      <!-- Reel 2 -->
-      <div class="phone-frame reveal" style="animation-delay:0.15s">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <iframe
-            src="https://www.instagram.com/reel/DXCtZcFja4M/embed/"
-            loading="lazy"
-            allowfullscreen
-            frameborder="0"
-            scrolling="no"
-            title="Instagram Reel"
-          ></iframe>
-        </div>
-        <div class="phone-label">
-          <span class="phone-client">Kollegah</span>
-          <span class="phone-type">Artist Content</span>
-        </div>
-      </div>
-
-      <!-- Reel 3 — König Ludwig Brand Reel -->
-      <div class="phone-frame reveal" style="animation-delay:0.3s">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <iframe
-            src="https://www.instagram.com/reel/DQpTkteiFDh/embed/"
-            loading="lazy"
-            allowfullscreen
-            frameborder="0"
-            scrolling="no"
-            title="König Ludwig Brand Reel"
-          ></iframe>
-        </div>
-        <div class="phone-label">
-          <span class="phone-client">König Ludwig</span>
-          <span class="phone-type">Brand Reel</span>
-        </div>
-      </div>
-
-      <!-- Reel 4 — Kaltenberger Ritterturnier -->
-      <div class="phone-frame reveal" style="animation-delay:0.45s">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <iframe
-            src="https://www.instagram.com/reel/C94UtQ4iVWO/embed/"
-            loading="lazy"
-            allowfullscreen
-            frameborder="0"
-            scrolling="no"
-            title="Kaltenberger Ritterturnier"
-          ></iframe>
-        </div>
-        <div class="phone-label">
-          <span class="phone-client">König Ludwig</span>
-          <span class="phone-type">Kaltenberger Ritterturnier</span>
-        </div>
-      </div>
-
-      <!-- Reel 5 — neu -->
-      <div class="phone-frame reveal" style="animation-delay:0.6s">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <iframe
-            src="https://www.instagram.com/reel/DXrpbpakUdp/embed/"
-            loading="lazy"
-            allowfullscreen
-            frameborder="0"
-            scrolling="no"
-            title="Instagram Reel"
-          ></iframe>
-        </div>
-        <div class="phone-label">
-          <span class="phone-client">Bienemann NRW</span>
-          <span class="phone-type">Lebensmittel &amp; Backhandwerk</span>
-        </div>
-      </div>
-
+    <div class="reel-carousel" id="reel-carousel" role="list">
+      <!-- Wird per JS aus data.js REELS befüllt -->
     </div>
 
-    <!-- Showreel Placeholder darunter -->
-    <div class="reel-main-wide reveal">
-      <div class="reel-main-label">Showreel · Platzhalter</div>
-      <div class="play-btn" role="button" aria-label="Showreel abspielen" tabindex="0">▶</div>
-      <p class="reel-main-sub">Vollständiger Showreel — wird nach Fertigstellung eingebunden</p>
-    </div>
+    <!-- Dot Navigation -->
+    <div class="carousel-dots" id="carousel-dots" aria-label="Reel Navigation"></div>
 
-    <!-- Client Chips -->
-    <div class="reel-clients" aria-hidden="true">
-      <span class="floating-chip chip-ref">König Ludwig</span>
-      <span class="floating-chip chip-ref">Kaltenberger</span>
-      <span class="floating-chip chip-ref">Samsung</span>
-      <span class="floating-chip chip-ref">Kollegah</span>
-      <span class="floating-chip chip-ref">DAZN</span>
-    </div>
+  </div>
 
-        <div id="reel-grid" style="display:none"></div><!-- Legacy-Grid ausgeblendet -->
+</section>
 
-        <!-- Client chips -->
-        <div class="reel-clients" aria-hidden="true">
-          <span class="floating-chip chip-ref">Samsung</span>
-          <span class="floating-chip chip-ref">Kingsleague</span>
-          <span class="floating-chip chip-ref">ZDF</span>
-          <span class="floating-chip chip-ref">DAZN</span>
-          <span class="floating-chip chip-ref">Kollegah</span>
-        </div>
 
-      </div>
+<!-- ══════════════════════════════════════════════════════════
+     WEB PROJEKTE (Kevin)
+     ══════════════════════════════════════════════════════════ -->
+<section id="web-projekte" aria-labelledby="web-headline">
+  <div class="container">
+
+    <span class="section-label">Web &amp; Digital</span>
+    <h2 id="web-headline" class="reveal">
+      Websites, die nicht nur<br>gut aussehen — sondern wirken.
+    </h2>
+    <p class="reveal" style="max-width:580px; margin-bottom:3rem;">
+      Von lokalen Dienstleistern über B2B-Portale bis zu KI-gestützten Landingpages. Jedes Projekt folgt einem Ziel: verständlich auftreten, Vertrauen schaffen, Anfragen auslösen.
+    </p>
+
+    <div id="web-projects-grid" role="list"></div>
+
+    <!-- Web-Referenzen Marquee -->
+    <div class="web-clients-marquee" aria-hidden="true">
+      <div class="web-clients-label">Web-Referenzen</div>
+      <div class="web-marquee-row" id="web-marquee"></div>
     </div>
 
   </div>
